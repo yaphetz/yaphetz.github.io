@@ -1,0 +1,24 @@
+<div class="navigation">
+    <mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" (click)="toolbarToggle =!toolbarToggle">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+    </mat-toolbar>
+
+    <mat-drawer-container class="example-container" autosize>
+        <mat-drawer #drawer [opened]="toolbarToggle" class="example-sidenav" mode="side">
+
+            <div class="menu-container">
+                <mat-nav-list>
+                    <a mat-list-item *ngFor="let menuItem of menuItems">{{menuItem.name}}</a>
+                </mat-nav-list>
+                <div class="logo-container">
+                    <img src="../../assets/images/UT-black.png">
+                </div>
+            </div>
+
+        </mat-drawer>
+        <app-dashboard></app-dashboard>
+    </mat-drawer-container>
+</div>

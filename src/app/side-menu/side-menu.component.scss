@@ -1,0 +1,21 @@
+.navigation {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+
+  .menu-container {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20%;
+    img {
+      width: 50%;
+    }
+  }
+}
