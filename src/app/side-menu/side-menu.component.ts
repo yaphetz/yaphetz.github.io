@@ -15,6 +15,11 @@ export class SideMenuComponent implements OnInit {
     this.menuItems = [
       {
         name: 'Cerere nouă',
+        route: 'acasa',
+      },
+      {
+        name: 'Schițe',
+        route: 'drafts',
       },
       {
         name: 'Istoric cereri',

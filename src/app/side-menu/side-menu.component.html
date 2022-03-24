@@ -11,7 +11,7 @@
 
             <div class="menu-container">
                 <mat-nav-list>
-                    <a mat-list-item *ngFor="let menuItem of menuItems">{{menuItem.name}}</a>
+                    <a mat-list-item *ngFor="let menuItem of menuItems" [routerLink]="menuItem.route" routerLinkActive="active">{{menuItem.name}}</a>
                 </mat-nav-list>
                 <div class="logo-container">
                     <img src="../../assets/images/UT-black.png">
@@ -19,6 +19,6 @@
             </div>
 
         </mat-drawer>
-        <app-dashboard></app-dashboard>
+        <router-outlet></router-outlet>
     </mat-drawer-container>
 </div>
