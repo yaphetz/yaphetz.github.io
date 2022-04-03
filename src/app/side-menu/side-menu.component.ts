@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -9,7 +10,11 @@ export class SideMenuComponent implements OnInit {
   toolbarToggle: boolean = true;
   menuItems: any;
 
-  constructor() {}
+  constructor(private authService: FirebaseService) {}
+
+  logout(){
+    this.authService.logout();
+  }
 
   ngOnInit(): void {
     this.menuItems = [

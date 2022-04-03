@@ -3,6 +3,10 @@
   grid-template-rows: auto 1fr;
   height: 100%;
 
+  .mat-toolbar {
+    justify-content: space-between;
+  }
+
   .menu-container {
     display: flex;
     flex-flow: column;

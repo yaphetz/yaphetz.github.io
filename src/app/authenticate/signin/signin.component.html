@@ -1,0 +1,23 @@
+<mat-card-title>Login</mat-card-title>
+
+<form>
+    <p>
+        <mat-form-field>
+            <input #emailInput type="text" matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field>
+            <input #passwordInput type="password" matInput placeholder="Parola" formControlName="parola">
+        </mat-form-field>
+    </p>
+
+    <p class="error">
+    </p>
+
+    <div class="button">
+        <button type="button" (click)="signin(emailInput.value, passwordInput.value)" mat-button>Login</button>
+    </div>
+
+</form>
