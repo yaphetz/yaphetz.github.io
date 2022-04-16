@@ -5,6 +5,19 @@
 
   .mat-toolbar {
     justify-content: space-between;
+
+    .user-panel {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: auto;
+
+      mat-icon {
+        font-size: 2rem;
+        height: auto;
+        width: auto;
+      }
+    }
   }
 
   .menu-container {

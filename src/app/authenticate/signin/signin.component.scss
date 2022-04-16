@@ -1,0 +1,22 @@
+.login-button-container {
+    position: relative;
+
+    mat-spinner {
+        position: absolute;
+        z-index: 1;
+        left: 1rem;
+        top: 50%;
+        bottom: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.login-button {
+    width: 100%;
+    ::ng-deep span {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+    }
+}

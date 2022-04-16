@@ -1,0 +1,13 @@
+.form {
+  display: grid;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.form-element {
+  width: fit-content;
+  &.highlight {
+    background: rgba(0,0,0,0.2);
+  }
+}
+

@@ -1,15 +1,27 @@
 <div class="navigation">
-    <mat-toolbar color="primary">
-        <button mat-icon-button class="example-icon" (click)="toolbarToggle =!toolbarToggle">
-            <mat-icon>menu</mat-icon>
-        </button>
+    <mat-toolbar color="primary" class="">
 
-        <button (click)="logout()">Logout</button>
+        <div *ngIf="(authService.firebaseAuth.user | async)" class="user-panel">
+            <a mat-flat-button (click)="logout()">Deconectare</a>
+            <button mat-icon-button [matMenuTriggerFor]="user_menu" ><mat-icon>account_circle</mat-icon></button>
+
+            <mat-menu #user_menu>
+                <button mat-menu-item>
+                  <mat-icon>person</mat-icon>
+                  <span>Informații cont</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>lock</mat-icon>
+                  <span>Schimbă parola</span>
+                </button>
+              </mat-menu>
+              
+        </div>
 
     </mat-toolbar>
 
     <mat-drawer-container class="example-container" autosize>
-        <mat-drawer #drawer [opened]="toolbarToggle" class="example-sidenav" mode="side">
+        <mat-drawer #drawer [opened]="(authService.firebaseAuth.user | async)" class="example-sidenav" mode="side">
 
             <div class="menu-container">
                 <mat-nav-list>

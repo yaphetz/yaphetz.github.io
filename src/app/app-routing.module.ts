@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FirebaseService as AuthGuard } from './services/firebase.service';
-
+import { FormBuilderComponent } from './admin/form-builder/form-builder.component';
+import { AuthGuard } from './auth.guard';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { SigninComponent } from './authenticate/signin/signin.component';
 import { SignupComponent } from './authenticate/signup/signup.component';
@@ -13,6 +13,11 @@ const routes: Routes = [
   {
     path: 'acasa',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'form-builder',
+    component: FormBuilderComponent,
     canActivate: [AuthGuard]
   },
   {

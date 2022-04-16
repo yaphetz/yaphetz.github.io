@@ -1,0 +1,41 @@
+<div class="add-buttons-container">
+    <button mat-raised-button (click)="addTextInput()">
+        <mat-icon>add</mat-icon>
+        Text input
+    </button>
+    
+    <button mat-raised-button (click)="addItem('text-area')">
+        <mat-icon>add</mat-icon>
+        Text area
+    </button>
+    
+    <button mat-raised-button (click)="addItem('checkbox')">
+        <mat-icon>add</mat-icon>
+        Checkbox
+    </button>
+    
+    <button mat-raised-button (click)="addItem('radio')">
+        <mat-icon>add</mat-icon>
+        Radio
+    </button>
+    
+    <button mat-raised-button (click)="addItem('select')">
+        <mat-icon>add</mat-icon>
+        Select
+    </button>
+</div>
+
+<div class="form-builder-container">
+    <div class="form-builder">
+        <gridster [options]="options">
+            <gridster-item [item]="item" *ngFor="let item of dashboard" (mouseenter)="hightlightItem(item)" (mouseleave)="hightlightItem(item)"> 
+                <button mat-icon-button (mousedown)="removeItem($event, item)" ><mat-icon>delete</mat-icon></button>
+
+                <p>Tip: {{item.type}}</p>
+            </gridster-item>
+        </gridster>
+    </div>
+
+
+    <app-form-preview [items]="dashboard"></app-form-preview>
+</div>

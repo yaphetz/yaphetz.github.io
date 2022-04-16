@@ -1,15 +1,18 @@
 import { Injectable } from "@angular/core";
 import { Router, CanActivate } from "@angular/router";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
+import { Observable, from } from "rxjs";
+import { take } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
 })
 export class FirebaseService {
   isLoggedIn: boolean = false;
-  constructor(public firebaseAuth: AngularFireAuth, private router: Router) {}
-
- async isUserLoggedIn() {}
+  user$: Observable<any>;
+  constructor(public firebaseAuth: AngularFireAuth, private router: Router) {
+    this.user$ = this.firebaseAuth.authState;
+  }
 
   async signin(email: string, password: string) {
     await this.firebaseAuth
@@ -29,14 +32,15 @@ export class FirebaseService {
       });
   }
 
-  logout() {
-    console.log(' pl')
-    this.firebaseAuth.signOut();
+  async logout() {
+    console.log("Log out");
+    await this.firebaseAuth.signOut();
     this.isLoggedIn = false;
     localStorage.removeItem("user");
+    this.router.navigate(['login'])
   }
 
-  canActivate(): boolean {
+  canActivates(): boolean {
     if (!this.isLoggedIn) {
       this.router.navigate(["login"]);
       return false;

@@ -14,7 +14,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from "@angular/material/input";
-
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatMenuModule } from '@angular/material/menu';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { GridsterModule } from 'angular-gridster2';
 
 
 import { SideMenuComponent } from './side-menu/side-menu.component';
@@ -27,6 +30,9 @@ import { FirebaseService } from './services/firebase.service';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { SignupComponent } from './authenticate/signup/signup.component';
 import { SigninComponent } from './authenticate/signin/signin.component';
+import { FormBuilderComponent } from './admin/form-builder/form-builder.component';
+import { FormPreviewComponent } from './admin/form-preview/form-preview.component';
+import { InputTextPopupComponent } from './admin/form-builder/config-popups/input-text/input-text.component';
 
 
 @NgModule({
@@ -41,6 +47,9 @@ import { SigninComponent } from './authenticate/signin/signin.component';
     AuthenticateComponent,
     SignupComponent,
     SigninComponent,
+    FormBuilderComponent,
+    FormPreviewComponent,
+    InputTextPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +64,7 @@ import { SigninComponent } from './authenticate/signin/signin.component';
       appId: "1:176948909840:web:45cd74419d9dbfa14f3795",
       measurementId: "G-B5VFEH2MBW"
     }),
+    GridsterModule,
     HttpClientModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -64,6 +74,10 @@ import { SigninComponent } from './authenticate/signin/signin.component';
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
+    MatMenuModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

@@ -1,0 +1,14 @@
+<div class="form-preview">
+    {{items | json}}
+</div>
+
+<div class="form" style="display: grid;">
+    <div class="form-element" *ngFor="let element of items" [style.gridColumn]="element.x + 1" [class.highlight]="element.highlight"
+        [style.gridRow]="element.y +1">
+        <mat-form-field appearance="fill">
+            <mat-label>{{element.label}}</mat-label>
+            <input matInput *ngIf="element.type == 'text-input'">
+        </mat-form-field>
+
+    </div>
+</div>

@@ -46,7 +46,7 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -63,15 +63,27 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "development": {
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": false,
+              "sourceMap": true,
+              "optimization": false,
+              "namedChunks": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "defaultConfiguration": "development",
           "options": {
             "browserTarget": "SecretariatOnline:build"
           },
           "configurations": {
+            "development": {
+              "browserTarget": "SecretariatOnline:build:development"
+            },
             "production": {
               "browserTarget": "SecretariatOnline:build:production"
             }

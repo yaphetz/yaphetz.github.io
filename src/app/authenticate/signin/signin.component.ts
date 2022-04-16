@@ -10,14 +10,16 @@ import { Router } from "@angular/router";
 export class SigninComponent implements OnInit {
   constructor(private authService: FirebaseService, private router: Router) {}
   @Output() isLoggedInEventEmitter = new EventEmitter();
+  signinFetching: boolean = false;
 
   async signin(email: string, password: string) {
-    await this.authService
-      .signin(email, password)
-      .then(()=> {
-        if(this.authService.isLoggedIn == true)
-        this.router.navigate(['acasa']);
-      });
+    this.signinFetching = true;
+    await this.authService.signin(email, password).then(() => {
+      if (this.authService.isLoggedIn == true) {
+        this.router.navigate(["acasa"]);
+        this.signinFetching = false;
+      }
+    });
   }
 
   ngOnInit(): void {}

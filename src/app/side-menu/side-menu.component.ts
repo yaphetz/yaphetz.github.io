@@ -10,7 +10,7 @@ export class SideMenuComponent implements OnInit {
   toolbarToggle: boolean = true;
   menuItems: any;
 
-  constructor(private authService: FirebaseService) {}
+  constructor(public authService: FirebaseService) {}
 
   logout(){
     this.authService.logout();
@@ -25,6 +25,10 @@ export class SideMenuComponent implements OnInit {
       {
         name: 'Schițe',
         route: 'drafts',
+      },
+      {
+        name: 'Form builder',
+        route: 'form-builder',
       },
       {
         name: 'Istoric cereri',
