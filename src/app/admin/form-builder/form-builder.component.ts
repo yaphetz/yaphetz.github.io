@@ -1,7 +1,16 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Optional } from "@angular/core";
 import { CompactType, DisplayGrid, Draggable, GridsterConfig, GridsterItem, GridType, PushDirections, Resizable } from 'angular-gridster2';
 import { InputModel } from "../form-models/input/input.model";
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "@angular/fire/compat/firestore";
+import { InputTextPopupComponent } from "./config-popups/input-text/input-text.component";
+import { Observable } from "rxjs";
+
+interface Template {
+  id: string;
+  active: boolean;
+  template: string;
+}
 
 @Component({
   selector: "app-form-builder",
@@ -9,12 +18,17 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ["./form-builder.component.scss"],
 })
 export class FormBuilderComponent implements OnInit {
-  constructor( public popup: MatDialog ) {}
+  constructor( public popup: MatDialog, private firestore : AngularFirestore ) {}
+
+   templatesCollection: AngularFirestoreDocument<Template>;
+   templates: Observable<Template>;
 
   options: any;
   dashboard: Array<GridsterItem>;
+  templateName: string;
 
   ngOnInit(): void {
+
     this.options = {
       gridType: GridType.Fit,
       compactType: CompactType.None,
@@ -25,7 +39,7 @@ export class FormBuilderComponent implements OnInit {
       outerMarginBottom: null,
       outerMarginLeft: null,
       useTransformPositioning: true,
-      mobileBreakpoint: 640,
+      mobileBreakpoint: 340,
       useBodyForBreakpoint: false,
       minCols: 2,
       maxCols: 4,
@@ -71,9 +85,7 @@ export class FormBuilderComponent implements OnInit {
       scrollToNewItems: false
     };
 
-    this.dashboard = [
-      {cols: 1, rows: 1, y: 0, x: 0, hightlight: false, type: 'text-input'},
-    ];
+    this.dashboard = [];
   }
 
   addItem(type): void {
@@ -91,6 +103,36 @@ export class FormBuilderComponent implements OnInit {
   }
 
   addTextInput() {
-    let element: InputModel;
+    let element: InputModel = {cols: 1, rows: 1, y: 0, x: 0} ;
+    let dialogRef = this.popup.open(InputTextPopupComponent, {
+      data: element
+    })
+
+    dialogRef.afterClosed().subscribe( res=> {
+      if(res.data)
+      this.dashboard.push(res.data)
+    })
   }
+
+  editTextInput(item) {
+    console.log(item)
+    console.log(this.dashboard[this.dashboard.indexOf(item)])
+    let dialogRef = this.popup.open(InputTextPopupComponent, {
+      data: this.dashboard[this.dashboard.indexOf(item)]
+    })
+
+    dialogRef.afterClosed().subscribe( res=> {
+      if(res.data)
+      this.dashboard[this.dashboard.indexOf(item)] = res.data;
+    })
+  }
+
+  updateContent() {
+    this.templatesCollection = this.firestore.doc(`templates/${this.templateName}`)
+    this.templatesCollection.set({template: JSON.stringify(this.dashboard), active: true, id: this.templateName},{merge: false})
+  }
+
+
 }
+
+

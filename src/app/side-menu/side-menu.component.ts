@@ -31,10 +31,11 @@ export class SideMenuComponent implements OnInit {
         route: 'form-builder',
       },
       {
-        name: 'Istoric cereri',
+        name: 'Șabloane',
+        route: 'templates',
       },
       {
-        name: 'Templateuri cereri',
+        name: 'Istoric cereri',
       },
     ];
   }

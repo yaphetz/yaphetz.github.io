@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormBuilderComponent } from './admin/form-builder/form-builder.component';
+import { TemplatePreviewComponent } from './admin/templates/template-preview/template-preview.component';
+import { TemplatesComponent } from './admin/templates/templates.component';
 import { AuthGuard } from './auth.guard';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { SigninComponent } from './authenticate/signin/signin.component';
@@ -19,6 +21,14 @@ const routes: Routes = [
     path: 'form-builder',
     component: FormBuilderComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'templates',
+    component: TemplatesComponent,
+  },
+  {
+    path: 'templates/:id',
+    component: TemplatePreviewComponent,
   },
   {
     path: 'drafts',

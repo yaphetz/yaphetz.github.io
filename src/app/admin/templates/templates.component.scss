@@ -1,0 +1,65 @@
+.templates-container {
+  display: grid;
+  flex-flow: column;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  grid-gap: 2rem;
+  gap: 2rem;
+  padding: 2rem 0;
+
+  mat-card {
+    display: flex;
+    flex-flow: column;
+    gap: 1.5rem;
+
+    .options-container {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+          
+        ::ng-deep .mat-button-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .title-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    mat-card-title {
+      display: flex;
+      align-items: center;
+      margin: auto 0;
+    }
+  }
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  ::ng-deep .mat-form-field-infix {
+    display: flex;
+  }
+
+  .templates-counter {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+}
+
+:host {
+  .container {
+    padding: 2rem;
+  }
+}
+
+.disabled {
+    filter: brightness(0.8);
+}

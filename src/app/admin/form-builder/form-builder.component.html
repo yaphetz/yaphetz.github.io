@@ -23,15 +23,29 @@
         <mat-icon>add</mat-icon>
         Select
     </button>
+
+    <button mat-raised-button (click)="updateContent()">
+        <mat-icon>add</mat-icon>
+        Save to DB
+    </button>
 </div>
+<input [(ngModel)]="templateName"> 
 
 <div class="form-builder-container">
     <div class="form-builder">
         <gridster [options]="options">
             <gridster-item [item]="item" *ngFor="let item of dashboard" (mouseenter)="hightlightItem(item)" (mouseleave)="hightlightItem(item)"> 
-                <button mat-icon-button (mousedown)="removeItem($event, item)" ><mat-icon>delete</mat-icon></button>
 
-                <p>Tip: {{item.type}}</p>
+                <mat-card>
+                    <mat-card-subtitle>Tip: {{item.type}}
+                        <div class="buttons">
+                            <button mat-icon-button (mousedown)="removeItem($event, item)" ><mat-icon>delete</mat-icon></button>
+                            <button mat-icon-button (mousedown)="editTextInput(item)" ><mat-icon>edit</mat-icon></button>
+                        </div>
+                    </mat-card-subtitle>
+                    <mat-card-title>Nume: {{item.name}}</mat-card-title>
+
+                  </mat-card>
             </gridster-item>
         </gridster>
     </div>

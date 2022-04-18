@@ -1,9 +1,6 @@
-<div class="form-preview">
-    {{items | json}}
-</div>
 
 <div class="form" style="display: grid;">
-    <div class="form-element" *ngFor="let element of items" [style.gridColumn]="element.x + 1" [style.gridColumnStart]="element.x+1" [style.gridColumnEnd]="element.cols + element.x +1" [class.highlight]="element.highlight"
+    <div class="form-element" *ngFor="let element of template" [style.gridColumn]="element.x + 1" [style.gridColumnStart]="element.x+1" [style.gridColumnEnd]="element.cols + element.x +1" [class.highlight]="element.highlight"
         [style.gridRow]="element.y +1">
         <mat-form-field appearance="fill" style="width: inherit;">
             <mat-label>{{element.name}}</mat-label>

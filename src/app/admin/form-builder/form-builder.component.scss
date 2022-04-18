@@ -4,6 +4,17 @@
     grid-template-columns: 4fr 1fr;
     height: 100%;
     width: 100%;
+
+    mat-card {
+        box-shadow: none;
+        
+        mat-card-subtitle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
 }
 
 .add-buttons-container {
@@ -11,3 +22,4 @@
     gap: 1rem;
     padding: 1rem;
 }
+

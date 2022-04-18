@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="search-container">
+        <mat-form-field>
+            <input [ngModel]="searchValue" matInput placeholder="Caută" (ngModelChange)="updateSearch($event)">
+            <mat-icon>search</mat-icon>
+        </mat-form-field>
+
+        <div>
+            <p class="templates-counter"> Șabloane afișate: {{ (templates2 | searchTemplate: searchValue).length }} </p>
+        </div>
+    </div>
+
+    <div class="templates-container">
+        <ng-container *ngFor="let template of templates2 | searchTemplate: searchValue">
+            <mat-card [class]=" template.active ? 'enabled' : 'disabled' " class="animate__animated animate__fadeIn">
+
+                <div class="title-container">
+                    <mat-card-title style="line-height: 1.2">Titlu: {{template.id}}</mat-card-title>
+                    <button mat-button color="warn" [disabled]="template.active ? 'true' : 'false'">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+
+                <div class="options-container">
+                    <button mat-flat-button>
+                        <mat-icon>edit</mat-icon>
+                        Edit
+                    </button>
+
+                    <button mat-button [color]="template.active ? 'warn' : 'primary' ">
+                        <mat-icon> {{ template.active? 'toggle_on' : 'toggle_off'}}</mat-icon>
+                        {{ template.active? 'Enabled' : 'Disabled'}}
+                    </button>
+
+                    <button mat-button (click)="openTemplatePreview(template)">
+                        <mat-icon>remove_red_eye</mat-icon>
+                        Preview
+                    </button>
+                </div>
+
+            </mat-card>
+        </ng-container>
+    </div>
+</div>

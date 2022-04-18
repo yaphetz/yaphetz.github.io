@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,11 +13,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from "@angular/material/input";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatMenuModule } from '@angular/material/menu';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { GridsterModule } from 'angular-gridster2';
 
 
@@ -33,6 +35,9 @@ import { SigninComponent } from './authenticate/signin/signin.component';
 import { FormBuilderComponent } from './admin/form-builder/form-builder.component';
 import { FormPreviewComponent } from './admin/form-preview/form-preview.component';
 import { InputTextPopupComponent } from './admin/form-builder/config-popups/input-text/input-text.component';
+import { TemplatesComponent } from './admin/templates/templates.component';
+import { TemplatePreviewComponent } from './admin/templates/template-preview/template-preview.component';
+import { SearchTemplatePipe } from './pipes/search-template.pipe';
 
 
 @NgModule({
@@ -50,6 +55,9 @@ import { InputTextPopupComponent } from './admin/form-builder/config-popups/inpu
     FormBuilderComponent,
     FormPreviewComponent,
     InputTextPopupComponent,
+    TemplatesComponent,
+    TemplatePreviewComponent,
+    SearchTemplatePipe,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +72,7 @@ import { InputTextPopupComponent } from './admin/form-builder/config-popups/inpu
       appId: "1:176948909840:web:45cd74419d9dbfa14f3795",
       measurementId: "G-B5VFEH2MBW"
     }),
+    AngularFirestoreModule,
     GridsterModule,
     HttpClientModule,
     MatSidenavModule,
@@ -77,7 +86,8 @@ import { InputTextPopupComponent } from './admin/form-builder/config-popups/inpu
     MatMenuModule,
     ReactiveFormsModule,
     FormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCheckboxModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]
