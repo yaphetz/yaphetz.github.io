@@ -8,7 +8,7 @@ import {
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { map, take, tap } from "rxjs/operators";
-import { FirebaseService } from "./services/firebase.service";
+import { FirebaseService } from "../services/firebase.service";
 
 @Injectable({
   providedIn: "root",

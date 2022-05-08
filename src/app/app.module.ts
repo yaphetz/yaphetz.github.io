@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
@@ -38,6 +38,9 @@ import { InputTextPopupComponent } from './admin/form-builder/config-popups/inpu
 import { TemplatesComponent } from './admin/templates/templates.component';
 import { TemplatePreviewComponent } from './admin/templates/template-preview/template-preview.component';
 import { SearchTemplatePipe } from './pipes/search-template.pipe';
+import { FormioComponent } from './formio/formio.component';
+import { Formio, FormioModule, FormioAppConfig } from 'angular-formio';
+
 
 
 @NgModule({
@@ -58,11 +61,13 @@ import { SearchTemplatePipe } from './pipes/search-template.pipe';
     TemplatesComponent,
     TemplatePreviewComponent,
     SearchTemplatePipe,
+    FormioComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormioModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyB4p20bnbC8hAFZ35aTB93_cavLI7Hqrdc",
       authDomain: "secretariat-online-dm.firebaseapp.com",

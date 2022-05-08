@@ -3,19 +3,21 @@
 
         <div *ngIf="(authService.firebaseAuth.user | async)" class="user-panel">
             <a mat-flat-button (click)="logout()">Deconectare</a>
-            <button mat-icon-button [matMenuTriggerFor]="user_menu" ><mat-icon>account_circle</mat-icon></button>
+            <button mat-icon-button [matMenuTriggerFor]="user_menu">
+                <mat-icon>account_circle</mat-icon>
+            </button>
 
             <mat-menu #user_menu>
                 <button mat-menu-item>
-                  <mat-icon>person</mat-icon>
-                  <span>Informații cont</span>
+                    <mat-icon>person</mat-icon>
+                    <span>Informații cont</span>
                 </button>
                 <button mat-menu-item>
-                  <mat-icon>lock</mat-icon>
-                  <span>Schimbă parola</span>
+                    <mat-icon>lock</mat-icon>
+                    <span>Schimbă parola</span>
                 </button>
-              </mat-menu>
-              
+            </mat-menu>
+
         </div>
 
     </mat-toolbar>
@@ -25,7 +27,12 @@
 
             <div class="menu-container">
                 <mat-nav-list>
-                    <a mat-list-item *ngFor="let menuItem of menuItems" [routerLink]="menuItem.route" routerLinkActive="active">{{menuItem.name}}</a>
+
+                    <div *ngFor="let menuItem of menuItems" class="menu-item-container" [class]="menuItem.class">
+                        <a mat-list-item [routerLink]="menuItem.route" routerLinkActive="active"
+                            *ngIf="menuItem.hasAcces">{{menuItem.name}}</a>
+                    </div>
+
                 </mat-nav-list>
                 <div class="logo-container">
                     <img src="../../assets/images/UT-black.png">

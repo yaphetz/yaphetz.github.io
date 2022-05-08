@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormBuilderComponent } from './admin/form-builder/form-builder.component';
 import { TemplatePreviewComponent } from './admin/templates/template-preview/template-preview.component';
 import { TemplatesComponent } from './admin/templates/templates.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './core/auth.guard';
+import { AdminGuard } from './core/admin.guard';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { SigninComponent } from './authenticate/signin/signin.component';
 import { SignupComponent } from './authenticate/signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DraftsComponent } from './drafts/drafts.component';
+import { FormioComponent } from './formio/formio.component';
 
 
 const routes: Routes = [
@@ -20,7 +22,7 @@ const routes: Routes = [
   {
     path: 'form-builder',
     component: FormBuilderComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: 'templates',
@@ -34,6 +36,10 @@ const routes: Routes = [
     path: 'drafts',
     component: DraftsComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'formio',
+    component: FormioComponent,
   },
   {
     path: '',
