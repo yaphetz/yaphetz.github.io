@@ -40,6 +40,7 @@ import { TemplatePreviewComponent } from './admin/templates/template-preview/tem
 import { SearchTemplatePipe } from './pipes/search-template.pipe';
 import { FormioComponent } from './formio/formio.component';
 import { Formio, FormioModule, FormioAppConfig } from 'angular-formio';
+import { FormioPreviewComponent } from './formio-preview/formio-preview.component';
 
 
 
@@ -62,6 +63,7 @@ import { Formio, FormioModule, FormioAppConfig } from 'angular-formio';
     TemplatePreviewComponent,
     SearchTemplatePipe,
     FormioComponent,
+    FormioPreviewComponent,
   ],
   imports: [
     BrowserModule,

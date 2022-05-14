@@ -11,6 +11,7 @@ import { SignupComponent } from './authenticate/signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DraftsComponent } from './drafts/drafts.component';
 import { FormioComponent } from './formio/formio.component';
+import { FormioPreviewComponent } from './formio-preview/formio-preview.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'formio',
     component: FormioComponent,
+  },
+  {
+    path: 'formio-preview',
+    component: FormioPreviewComponent,
   },
   {
     path: '',
