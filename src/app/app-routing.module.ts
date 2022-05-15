@@ -10,8 +10,7 @@ import { SigninComponent } from './authenticate/signin/signin.component';
 import { SignupComponent } from './authenticate/signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DraftsComponent } from './drafts/drafts.component';
-import { FormioComponent } from './formio/formio.component';
-import { FormioPreviewComponent } from './formio-preview/formio-preview.component';
+import { SubmissionsComponent } from './admin/submissions/submissions.component';
 
 
 const routes: Routes = [
@@ -39,12 +38,9 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'formio',
-    component: FormioComponent,
-  },
-  {
-    path: 'formio-preview',
-    component: FormioPreviewComponent,
+    path: 'submissions',
+    component: SubmissionsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '',

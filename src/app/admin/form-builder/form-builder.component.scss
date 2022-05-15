@@ -1,25 +1,33 @@
+::ng-deep .card-body {
+    .btn {
+        font-size: 1rem!important;
+        width: 100%;
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.25rem 1rem;
+        font-weight: 500;
+    }
+}
 
-.form-builder-container {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    height: 100%;
-    width: 100%;
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
 
-    mat-card {
-        box-shadow: none;
-        
-        mat-card-subtitle {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    .titleandbuttons {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        .formName {
+            font-size: 2rem;
         }
     }
 
+    .buttons {
+        display: flex;
+        gap: 2rem;
+        height: fit-content;
+    }
 }
-
-.add-buttons-container {
-    display: flex;
-    gap: 1rem;
-    padding: 1rem;
-}
-

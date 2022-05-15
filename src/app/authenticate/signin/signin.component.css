@@ -1,0 +1,31 @@
+.login-button-container {
+  position: relative;
+}
+
+.login-button-container mat-spinner {
+  position: absolute;
+  z-index: 1;
+  left: 1rem;
+  top: 50%;
+  bottom: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.login-button {
+  width: 100%;
+}
+
+.login-button ::ng-deep span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=signin.component.css.map */

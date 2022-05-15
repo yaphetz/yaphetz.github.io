@@ -32,10 +32,21 @@ export class TemplatesComponent implements OnInit {
     this.templates = this.templatesCollection.valueChanges();
     this.templates.subscribe( (data)=> {
       this.templates2 = data;
-      this.templates2.forEach( (template)=> {
-        template.template = JSON.parse(template.template)
-      })
     })
+  }
+
+  deleteTemplate(document) {
+    this.templatesCollection.doc(document).delete().then( ()=> {
+      console.log('Document removed');
+    })
+    .catch( (error)=> {
+      console.log("Error removing template: ", error)
+    })
+  }
+
+  toggleTemplateStatus(template) {
+    template.active = !template.active;
+    this.templatesCollection.doc(template.id).set(template)
   }
 
   updateSearch(term) {

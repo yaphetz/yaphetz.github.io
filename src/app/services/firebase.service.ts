@@ -15,6 +15,8 @@ import { User } from "../models/user.model";
 export class FirebaseService {
   isLoggedIn: boolean = false;
   user$: Observable<User>;
+  user: any;
+
   constructor(
     public firebaseAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -26,6 +28,7 @@ export class FirebaseService {
         else return of(null);
       })
     );
+    this.getUserData()
   }
 
   async signin(email: string, password: string) {
@@ -94,4 +97,11 @@ export class FirebaseService {
     const allowed = ["profesor", "secretariat"];
     return this.checkAuthorization(user, allowed);
   }
+
+  getUserData() {
+    this.user$.pipe(take(1)).subscribe( (user)=> {
+      this.user = user;
+    })
+  }
+
 }

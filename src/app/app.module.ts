@@ -19,6 +19,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatMenuModule } from '@angular/material/menu';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTableModule} from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 import { GridsterModule } from 'angular-gridster2';
 
 
@@ -33,14 +35,11 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { SignupComponent } from './authenticate/signup/signup.component';
 import { SigninComponent } from './authenticate/signin/signin.component';
 import { FormBuilderComponent } from './admin/form-builder/form-builder.component';
-import { FormPreviewComponent } from './admin/form-preview/form-preview.component';
-import { InputTextPopupComponent } from './admin/form-builder/config-popups/input-text/input-text.component';
 import { TemplatesComponent } from './admin/templates/templates.component';
 import { TemplatePreviewComponent } from './admin/templates/template-preview/template-preview.component';
 import { SearchTemplatePipe } from './pipes/search-template.pipe';
-import { FormioComponent } from './formio/formio.component';
 import { Formio, FormioModule, FormioAppConfig } from 'angular-formio';
-import { FormioPreviewComponent } from './formio-preview/formio-preview.component';
+import { SubmissionsComponent } from './admin/submissions/submissions.component';
 
 
 
@@ -57,14 +56,11 @@ import { FormioPreviewComponent } from './formio-preview/formio-preview.componen
     SignupComponent,
     SigninComponent,
     FormBuilderComponent,
-    FormPreviewComponent,
-    InputTextPopupComponent,
     TemplatesComponent,
     TemplatePreviewComponent,
     SearchTemplatePipe,
-    FormioComponent,
-    FormioPreviewComponent,
-  ],
+    SubmissionsComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -94,7 +90,9 @@ import { FormioPreviewComponent } from './formio-preview/formio-preview.componen
     ReactiveFormsModule,
     FormsModule,
     MatProgressSpinnerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule,
+    MatSelectModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

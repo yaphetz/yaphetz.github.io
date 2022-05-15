@@ -1,0 +1,15 @@
+::ng-deep formio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+::ng-deep formio > div {
+  max-width: 210mm;
+  width: 100%;
+  padding: 2rem 0;
+}
+/*# sourceMappingURL=template-preview.component.css.map */

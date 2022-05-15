@@ -16,7 +16,7 @@
 
                 <div class="title-container">
                     <mat-card-title style="line-height: 1.2">Titlu: {{template.id}}</mat-card-title>
-                    <button mat-button color="warn" [disabled]="template.active ? 'true' : 'false'">
+                    <button (click)="deleteTemplate(template.id)" mat-button color="warn" [disabled]="template.active ? 'true' : 'false'">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </div>
@@ -27,7 +27,7 @@
                         Edit
                     </button>
 
-                    <button mat-button [color]="template.active ? 'warn' : 'primary' ">
+                    <button (click)="toggleTemplateStatus(template)" mat-button [color]="template.active ? 'warn' : 'primary' ">
                         <mat-icon> {{ template.active? 'toggle_on' : 'toggle_off'}}</mat-icon>
                         {{ template.active? 'Enabled' : 'Disabled'}}
                     </button>

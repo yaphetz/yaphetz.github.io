@@ -3,9 +3,13 @@
 
         <div *ngIf="(authService.firebaseAuth.user | async)" class="user-panel">
             <a mat-flat-button (click)="logout()">Deconectare</a>
-            <button mat-icon-button [matMenuTriggerFor]="user_menu">
-                <mat-icon>account_circle</mat-icon>
-            </button>
+            <div class="user-info" [matMenuTriggerFor]="user_menu">
+                <button mat-icon-button >
+                    <mat-icon [height]="5">account_circle</mat-icon>
+                </button>
+                <p class="display-name">{{displayName}}</p>
+            </div>
+
 
             <mat-menu #user_menu>
                 <button mat-menu-item>

@@ -43,3 +43,14 @@
     }
   }
 }
+
+.user-info {
+  display: flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+
+  .display-name {
+    margin: 0;
+  }
+}

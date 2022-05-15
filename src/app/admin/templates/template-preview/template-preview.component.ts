@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {  FormBuilder, FormControl, FormGroup,  Validators } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-template-preview',
@@ -10,22 +12,25 @@ import {  FormBuilder, FormControl, FormGroup,  Validators } from '@angular/form
 export class TemplatePreviewComponent implements OnInit {
 
   subscriptionForm: FormGroup;
+  template;
 
-  constructor(private router: Router ) { 
+
+  constructor(private router: Router, private firestore : AngularFirestore, private authService: FirebaseService ) { 
     let routerData = this.router.getCurrentNavigation().extras.state;
     if(routerData)
-    this.template = routerData.template;
+    this.template = JSON.parse(routerData.template);
     else
     this.router.navigate(['templates'])
   }
 
-  template;
-
   ngOnInit(): void {
-    this.subscriptionForm = new FormGroup( {
-      Nume: new FormControl()
-    })
-    console.log(this.template)
+  }
+
+  onSubmit(submission) {
+    submission.user = this.authService.user;
+    submission.state = 'new';
+    submission.metadata.time = new Date();
+    this.firestore.collection('submissions').add(submission)
   }
 
 }

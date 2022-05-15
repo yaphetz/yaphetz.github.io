@@ -12,6 +12,7 @@ import { User } from "../models/user.model";
 export class SideMenuComponent implements OnInit {
   toolbarToggle: boolean = true;
   menuItems: any;
+  displayName: string;
   permission = this.adminGuard.menuAuthenticated("student");
   isAdmin: boolean = false;
   isAdminSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
@@ -23,6 +24,7 @@ export class SideMenuComponent implements OnInit {
   ) {
     this.authService.user$.subscribe((user) => {
       this.user = user;
+      this.displayName = user.displayName;
       this.setPermissions()
     });
   }
@@ -63,15 +65,19 @@ export class SideMenuComponent implements OnInit {
         role: ["secretariat"],
         class: "restricted"
       },
+      {
+        name: "Depuneri",
+        route: "submissions",
+        role: ["secretariat"],
+        class: "restricted"
+      },
     ];
 
   }
 
   setPermissions() {
     for (let menuItem of this.menuItems) {
-      console.log(this.hasAcces(menuItem.role));
       menuItem.hasAcces = this.hasAcces(menuItem.role)
     }
-    console.log(this.menuItems)
   }
 }
