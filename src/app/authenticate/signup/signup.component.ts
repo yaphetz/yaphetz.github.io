@@ -11,7 +11,6 @@ export class SignupComponent implements OnInit {
 
   signup(email: string, password: string) {
     this.authService.signup(email, password);
-    console.log(this.authService.isLoggedIn)
   }
 
   ngOnInit(): void {}
