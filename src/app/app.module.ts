@@ -22,7 +22,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { GridsterModule } from 'angular-gridster2';
-
+import { NgChartsModule } from 'ng2-charts';
 
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -76,6 +76,7 @@ import { SubmissionsComponent } from './admin/submissions/submissions.component'
       measurementId: "G-B5VFEH2MBW"
     }),
     AngularFirestoreModule,
+    NgChartsModule,
     GridsterModule,
     HttpClientModule,
     MatSidenavModule,
